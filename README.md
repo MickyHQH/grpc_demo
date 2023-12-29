@@ -11,6 +11,13 @@ A few resources to get you started if this is your first approach gRPC:
 
 ## How to setup
 
+Required:
+```
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=3.0.0"
+```
+
+Build project
 - Setup env as https://grpc.io/docs/languages/dart/quickstart/
 - Run BE source
   Run bin/grpc_backend.dart file on command line
@@ -18,5 +25,5 @@ A few resources to get you started if this is your first approach gRPC:
   dart run grpc_backend_demo/bin/grpc_backend.dart
   ```
 
-  - Open Client project and run on Android or iPhone device
+- Open Client project and run on Android or iPhone device
   Run grpc_client_demo/lib/main.dart
