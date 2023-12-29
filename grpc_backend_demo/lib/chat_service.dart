@@ -11,10 +11,7 @@ class ChatService extends ChatServiceBase {
 
   @override
   Future<UserResponse> getName(ServiceCall call, UserRequest request) async {
-    print("object enter");
     final user = listUser.where((element) => element["id"] == request.id).first;
-    await Future.delayed(Duration(seconds: 50));
-    print("object return");
     return UserResponse()
       ..name = user["name"] ?? ""
       ..id = user["id"] ?? "";
@@ -23,7 +20,6 @@ class ChatService extends ChatServiceBase {
   @override
   Stream<ServerStreamingOldChatResponse> serverStreamingOldChat(
       ServiceCall call, ServerStreamingOldChatRequest request) async* {
-    await Future.delayed(Duration(seconds: 20));
     for (var element in listOldMessage) {
       await Future.delayed(const Duration(milliseconds: 500), () {});
       yield ServerStreamingOldChatResponse(
@@ -37,7 +33,6 @@ class ChatService extends ChatServiceBase {
   @override
   Future<CandidateResponse> clientStreamingCandidate(ServiceCall call, Stream<CandidateRequest> request) async {
 
-    await Future.delayed(Duration(seconds: 20));
     List<CandidateRequest> list = [];
     final timer = Stopwatch();
     await for (var item in request) {
@@ -60,7 +55,6 @@ class ChatService extends ChatServiceBase {
 
   @override
   Stream<CandidateResponse> bidirectionalStreamingCandidate(ServiceCall call, Stream<CandidateRequest> request) async* {
-    await Future.delayed(Duration(seconds: 20));
     await for (var item in request) {
       await Future.delayed(const Duration(milliseconds: 100), () {
         // fake save data lost 100mls per one
@@ -79,7 +73,6 @@ class ChatService extends ChatServiceBase {
 
   @override
   Stream<MessageResponse> subscribe(ServiceCall call, ObserveMessageRequest request) async* {
-    await Future.delayed(Duration(seconds: 20));
     print("request.userId) ${request.userId}");
     deleteMessageObserver(request.userId);
 
@@ -104,7 +97,6 @@ class ChatService extends ChatServiceBase {
 
   @override
   Future<Empty> send(ServiceCall call, MessageRequest request) async {
-    await Future.delayed(Duration(seconds: 20));
     final msg = {
       "userId" : request.userId,
       "message" : request.message

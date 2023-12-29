@@ -40,8 +40,10 @@ dependencies:
   grpc: ^3.0.2
   protobuf: ^2.1.0
   #  grpc: ^3.1.0
-#  protobuf: ^2.0.0
-  flutter_riverpod: ^2.1.1
+  #  protobuf: ^2.0.0
+  hooks_riverpod: ^2.4.9
+  flutter_hooks:
+  riverpod_annotation: ^2.3.3
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  build_runner:
+  custom_lint:
+  riverpod_generator: ^2.3.9
+  riverpod_lint: ^2.3.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

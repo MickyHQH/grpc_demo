@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grpc_demo/candidate/candidate_bidirectional_page.dart';
 import 'package:grpc_demo/provider/client_provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../generated/chat.pb.dart';
 
-class CandidatePage extends ConsumerStatefulWidget {
+class CandidatePage extends StatefulHookConsumerWidget {
   const CandidatePage({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +20,10 @@ class _CandidatePageState extends ConsumerState<CandidatePage> {
   @override
   Widget build(BuildContext context) {
     final client = ref.watch(chatServiceProvider);
-    client.clientStreamingCandidate();
+    useEffect(() {
+      client.clientStreamingCandidate();
+      return null;
+    }, []);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
